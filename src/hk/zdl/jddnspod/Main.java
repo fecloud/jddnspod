@@ -76,8 +76,10 @@ public class Main {
 				} else {
 					addr = Tool.getPublicAddress();
 				}
-				if (null == addr)
+				if (null == addr){
+					Thread.sleep(sleep * 1000);
 					continue;
+				}
 			} catch (Exception x) {
 				log.severe("failed to obtain your IP address, your server maybe offline!");
 				log.throwing("", "", x);
