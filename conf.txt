@@ -4,7 +4,7 @@ login_password=ouyangfeng521
 #密码
 domain=fcloud.tk
 #域名
-sub_domain=devices
+sub_domain=ct
 #子域名
 sleep = 10
 #检查间隔，秒

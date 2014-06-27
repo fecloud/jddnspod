@@ -13,8 +13,8 @@
 
 ## Fill in name of program here.
 PROG="jddnspod"
-PROG_PATH="/usr/local/bin" #::# Not need, but sometimes helpful (if $PROG resides in /opt for example).
-PROG_ARGS=""
+PROG_PATH="/usr/local/jdk1.7.0_60/bin/java -jar /usr/local/bin" #::# Not need, but sometimes helpful (if $PROG resides in /opt for example).
+PROG_ARGS="-c /usr/local/bin/conf.txt"
 PID_PATH="/var/run/"
 
 start() {
@@ -24,7 +24,7 @@ start() {
         exit 1
     else
         ## Change from /dev/null to something like /var/log/$PROG if you want to save output.
-	java -jar $PROG_PATH/$PROG $PROG_ARGS 2>&1 >/var/log/jddnspod.log &
+	$PROG_PATH/$PROG.jar $PROG_ARGS >/var/log/jddnspod.log 2>&1 &
 	pid=`ps x|grep jddnspod |awk '{print $1}' | head -n 1`
         echo "$PROG started"
 	echo "$pid"
