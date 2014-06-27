@@ -20,7 +20,7 @@ public class Main {
 		log.info("JDDNSpod by Super-User<zdl@zdl.hk>");
 		log.info("2012/4/19");
 		Properties pros = new Properties();
-		if (args != null && args.length > 2) {
+		if (args != null && args.length >= 2) {
 			if (args[0].equals("-c")) {
 				pros.load(new InputStreamReader(new FileInputStream(args[1])) );
 			}
