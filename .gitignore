@@ -1,0 +1,17 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.class
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+/bin
+/build
+.DS_Store

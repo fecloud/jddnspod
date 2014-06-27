@@ -1,0 +1,14 @@
+login_email=ouyangfeng521@gmail.com
+#用户名
+login_password=ouyangfeng521
+#密码
+domain=fcloud.tk
+#域名
+sub_domain=devices
+#子域名
+sleep = 10
+#检查间隔，秒
+get_ip_sw=1
+#指定读取ip的方式0(ip138.com),1(local)
+local_ip=ip.txt
+#本地的ip更新地址(当get_ip_sw为1时一定要指定)
