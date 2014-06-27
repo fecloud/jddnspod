@@ -20,7 +20,13 @@ public class Main {
 		log.info("JDDNSpod by Super-User<zdl@zdl.hk>");
 		log.info("2012/4/19");
 		Properties pros = new Properties();
-		pros.load(new InputStreamReader(new FileInputStream("conf.txt")));
+		if (args != null && args.length > 2) {
+			if (args[0].equals("-c")) {
+				pros.load(new InputStreamReader(new FileInputStream(args[1])) );
+			}
+		}else {
+			pros.load(new InputStreamReader(new FileInputStream("conf.txt")));
+		}
 
 		pros.list(System.out);
 		Option o = new Option(pros.getProperty("login_email"), pros.getProperty("login_password"));
@@ -67,7 +73,7 @@ public class Main {
 				log.info("getPublicAddress");
 				if (pros.getProperty("get_ip_sw", "0").equals("1")) {
 					addr = Tool.getPublicAddress(pros.getProperty("local_ip", "ip.txt"));
-				}else {
+				} else {
 					addr = Tool.getPublicAddress();
 				}
 				if (null == addr)
@@ -99,5 +105,4 @@ public class Main {
 			Thread.sleep(sleep * 1000);
 		}
 	}
-
 }
