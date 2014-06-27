@@ -29,7 +29,7 @@
 
 	<target name="compiler" depends="-pre-compiler">
 		<echo level="info">compiler start</echo>
-		<javac srcdir="${src.dir}" destdir="${dest.dir}" encoding="${java.encoding}" target="${java.target}" includeantruntime="false" verbose="${verbose}">
+		<javac debug="true" srcdir="${src.dir}" destdir="${dest.dir}" encoding="${java.encoding}" target="${java.target}" includeantruntime="false" verbose="${verbose}">
 			<!--
 			<classpath>
 				<fileset dir="${libs.dir}">
