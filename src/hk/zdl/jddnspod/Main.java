@@ -22,9 +22,9 @@ public class Main {
 		Properties pros = new Properties();
 		if (args != null && args.length >= 2) {
 			if (args[0].equals("-c")) {
-				pros.load(new InputStreamReader(new FileInputStream(args[1])) );
+				pros.load(new InputStreamReader(new FileInputStream(args[1])));
 			}
-		}else {
+		} else {
 			pros.load(new InputStreamReader(new FileInputStream("conf.txt")));
 		}
 
@@ -53,21 +53,23 @@ public class Main {
 			System.exit(1);
 		}
 
-		Record record = null;
-		for (Record r : DNSpod.listRecords(o, domain)) {
-			if (r.get("type").equals("A") && r.get("name").equals(sub_domain)) {
-				record = r;
-				log.info("record found for " + sub_domain + " , id: " + r.get("id"));
-			}
-		}
-
-		if (record == null) {
-			log.severe("Record not found! Will now exit...");
-			System.exit(1);
-		}
-
-		InetAddress last_addr = InetAddress.getByName(record.get("value"));
 		while (true) {
+			
+			Record record = null;
+			for (Record r : DNSpod.listRecords(o, domain)) {
+				if (r.get("type").equals("A") && r.get("name").equals(sub_domain)) {
+					record = r;
+					log.info("record found for " + sub_domain + " , id: " + r.get("id"));
+				}
+			}
+
+			if (record == null) {
+				log.severe("Record not found! Will now exit...");
+				System.exit(1);
+			}
+
+			InetAddress last_addr = InetAddress.getByName(record.get("value"));
+			
 			InetAddress addr = null;
 			try {
 				log.info("getPublicAddress");
@@ -76,7 +78,7 @@ public class Main {
 				} else {
 					addr = Tool.getPublicAddress();
 				}
-				if (null == addr){
+				if (null == addr) {
 					Thread.sleep(sleep * 1000);
 					continue;
 				}
@@ -102,7 +104,6 @@ public class Main {
 					log.throwing("", "", x);
 				}
 				log.info("update succeed!");
-				last_addr = addr;
 			}
 			Thread.sleep(sleep * 1000);
 		}
